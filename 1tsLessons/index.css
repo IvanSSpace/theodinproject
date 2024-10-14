@@ -1,0 +1,71 @@
+.bookTag {
+    background: rgba(177, 88, 88, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+#addBook,
+#addBookButton {
+    background: rgba(177, 88, 88, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    height: 50px;
+}
+
+#addBookDialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(177, 88, 88, 0.5);
+    border-radius: 10px;
+    width: 300px;
+    height: 350px;
+}
+
+#addBookForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+#addBookForm input {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#read {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 20px;
+    padding: 10px;
+}
+
+#readLabel {
+    color: snow;
+}
+
+#readCheckbox {
+    width: 20px;
+    height: 20px;
+}
+
+#submitButton {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px;
+}

@@ -8,7 +8,21 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hello World</h1>
+  <h1>Моя библиотека книг</h1>
+  <div id="bookList"></div>
+  <button id="addBookButton">Добавить книгу</button>
+  <dialog close id="addBookDialog">
+    <form id="addBookForm">
+      <input type="text" required id="title" placeholder="Название">
+      <input type="text" required id="author" placeholder="Автор">
+      <input type="number" required id="pages" placeholder="Количество страниц">
+      <div id="read">
+        <input type="checkbox" id="readCheckbox" name="read">
+        <label for="read" id="readLabel">Прочитано</label>
+      </div>
+      <button id="submitButton" type="submit">Добавить</button>
+    </form>
+  </dialog>
   <script type="module" src="lesson1.js"></script>
-</body>
+  </body>
 </html>
