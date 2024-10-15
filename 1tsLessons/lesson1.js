@@ -27,26 +27,71 @@ const displayBooks = myLibrary => {
     const bookListTag = document.getElementById('bookList');
     bookListTag.innerHTML = '';
 
-    myLibrary.forEach(element => {
+    myLibrary.forEach((element, index) => {
         const { title, author, read, pages } = element;
 
         let bookTag = document.createElement('div');
         bookTag.classList.add('bookTag');
-        let removeBook = document.createElement('button');
 
         bookTag.innerHTML = `
         <h2>${title}<h2>
         <p>${author}</p>
         <p>${pages}</p>
-        <p>${read}</p>
-        
+        <div class="readStatusCheckBoxContainer">
+            <p>${read ? 'read' : 'not read yet'}</p>
+            <input class="readCheckBox" data-index="${index}" type="checkbox" ${read ? 'checked' : ''} />
+        </div>
+        <button class="removeButtons" data-index="${index}">remove</button>
         `;
 
         bookListTag.appendChild(bookTag);
     });
 
+    const removeButtons = document.querySelectorAll('.removeButtons');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', event => {
+            const index = event.target.dataset.index;
+            myLibrary.splice(index, 1);
+            // можно ли здесь достать data-index?
+            displayBooks(myLibrary);
+            console.log(index);
+        });
+    });
+
+    const editReadStatusAll = document.querySelectorAll('.readCheckBox');
+    console.log(editReadStatusAll);
+
+    editReadStatusAll.forEach(checkbox => {
+        checkbox.addEventListener('click', event => {
+            const index = parseInt(event.target.dataset.index);
+            myLibrary[index].read = event.target.checked;
+
+            // Обновляем только текст статуса для этой конкретной книги
+            const statusText = event.target.parentElement.querySelector('p');
+            statusText.textContent = event.target.checked
+                ? 'read'
+                : 'not read yet';
+
+            console.log(
+                `Статус чтения книги ${myLibrary[index].title} изменен на: ${event.target.checked ? 'прочитано' : 'не прочитано'}`
+            );
+        });
+    });
+    // readCheckBox
+
+    // const editReadStatus = () => {
+    // нужно так же по какому то индексу менять сзначение
+    // сначала просто добавь чекбокс который можно менять и на него надень эту функцию прямо в листенер
+    // }
+
+    // 1 найти каждую кнопку через forEach 2 дать ей листенер с функцией removeBook
+    // 3 создать функцию remove book которая по id из data-index удаляет элемент и
+    // снова отобразить displayBooks(myLibrary)
+
     // return '123';
 };
+
+document.button;
 
 console.log(displayBooks(myLibrary));
 
